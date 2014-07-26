@@ -12,8 +12,9 @@ gem 'jbuilder', '~> 1.2'
 gem 'debugger', group: [:development, :test]
 gem 'protected_attributes'
 gem 'less-rails'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
