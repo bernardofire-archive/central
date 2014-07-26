@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'debugger', group: [:development, :test]
 gem 'protected_attributes'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
