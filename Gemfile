@@ -11,6 +11,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'debugger', group: [:development, :test]
 gem 'protected_attributes'
+gem 'less-rails'
+gem "twitter-bootstrap-rails"
 gem 'devise'
 
 group :development, :test do
