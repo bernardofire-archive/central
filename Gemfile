@@ -14,7 +14,7 @@ gem 'protected_attributes'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
-gem 'haml'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
