@@ -1,4 +1,8 @@
 class InstitutionsController < ApplicationController
+  def index
+    @institutions = Institution.all
+  end
+
   def new
     @institution = Institution.new
   end
@@ -24,5 +28,10 @@ class InstitutionsController < ApplicationController
     @institution = Institution.find(params[:id])
     @institution.update!(params[:institution])
     redirect_to @institution
+  end
+
+  def destroy
+    Institution.find(params[:id]).destroy
+    redirect_to institutions_path
   end
 end
