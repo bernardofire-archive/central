@@ -5,6 +5,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'shoulda/matchers'
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
