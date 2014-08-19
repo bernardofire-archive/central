@@ -28,8 +28,7 @@ feature 'Institution' do
   scenario 'destroy' do
     ins = Institution.create(name: 'foobar')
     visit institution_path(ins)
-    click_button 'Delete'
-    expect(page).to have_content 'Are you sure?'
-    click_button 'OK'
+    click_link 'Delete'
+    expect(current_path).to be_eql institutions_path
   end
 end
