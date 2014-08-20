@@ -7,7 +7,7 @@ RSpec.describe Course, :type => :model do
   end
 
   it 'has many periods' do
-    course = Course.create(name: 'foo')
+    course = Course.create(name: 'course', institution: Institution.create(name: 'ins'))
     course.periods.create(number: 1, type: 'year')
     course.periods.create(number: 1, type: 'year')
     expect(course.periods[0].number).to be_eql(1)

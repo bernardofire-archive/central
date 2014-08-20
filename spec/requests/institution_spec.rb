@@ -5,14 +5,30 @@ feature 'Institution' do
     visit new_institution_path
     fill_in 'Name', with: 'foo'
     click_button 'Create Institution'
-    expect(page).to have_content 'Name: foo'
+    expect(page).to have_content 'foo'
     expect(page).to have_content 'Delete'
+  end
+
+  scenario 'show' do
+    ins = Institution.create(name: 'foobar')
+    visit institution_path(ins)
+    expect(page).to have_content('foobar')
+    expect(page).to have_content('Courses:')
+  end
+
+  scenario 'shows courses' do
+    ins = Institution.create(name: 'foobar')
+    ins.courses.create(name: 'course1')
+    ins.courses.create(name: 'course2')
+    visit institution_path(ins)
+    expect(page).to have_link('course1')
+    expect(page).to have_link('course2')
   end
 
   scenario 'index' do
     Institution.create(name: 'foobar')
     visit institutions_path
-    expect(page).to have_content 'Institutions'
+    expect(page).to have_content 'foobar'
     expect(page).to have_content 'New'
   end
 
@@ -21,7 +37,7 @@ feature 'Institution' do
     visit edit_institution_path(ins)
     fill_in 'Name', with: 'iff'
     click_button 'Update Institution'
-    expect(page).to have_content 'Name: iff'
+    expect(page).to have_content 'iff'
     expect(page).to have_content 'Delete'
   end
 

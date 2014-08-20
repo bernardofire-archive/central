@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(params[:course])
+    @course.institution = @institution
     if @course.save
       redirect_to @course
     else
@@ -18,6 +19,13 @@ class CoursesController < ApplicationController
 
   def edit
     @course = Course.find(params[:id])
+  end
+
+  def destroy
+    course = Course.find(params[:id])
+    ins = course.institution
+    course.destroy!
+    redirect_to institution_path(ins)
   end
 
   def update
