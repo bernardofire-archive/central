@@ -7,13 +7,17 @@ RSpec.describe Classroom, :type => :model do
   end
 
   describe 'name' do
-    it 'validate uniqueness' do
-    Classroom.create(name: 'a')
-    classroom = Classroom.create(name: 'a')
-    expect(classroom.save).to be_eql(false)
+    it 'uniqueness validation' do
+      Classroom.create(name: 'a')
+      classroom = Classroom.create(name: 'a')
+      expect(classroom.save).to be_eql(false)
     end
-  end
 
-  it 'test name length validation' do
+    it 'length validation' do
+      c1 = Classroom.create(name: 'f')
+      expect(c1.save).to be_eql(true)
+      c2 = Classroom.create(name: 'foo')
+      expect(c2.save).to be_eql(false)
+    end
   end
 end
