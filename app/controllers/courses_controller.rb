@@ -5,12 +5,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(params[:course])
-    @course.institution = @institution
     if @course.save
       redirect_to @course
     else
       render 'new'
     end
+  end
+
+  def index
+    @courses = Course.all
   end
 
   def show
@@ -23,9 +26,8 @@ class CoursesController < ApplicationController
 
   def destroy
     course = Course.find(params[:id])
-    ins = course.institution
     course.destroy!
-    redirect_to institution_path(ins)
+    redirect_to courses_path
   end
 
   def update
