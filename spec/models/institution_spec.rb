@@ -14,6 +14,12 @@ RSpec.describe Institution, :type => :model do
     expect(ins.courses[1].name).to be_eql('course_2')
   end
 
-  it 'test name presence' do
+  describe 'validation' do
+    it 'name presence' do
+      ins = Institution.create(name: 'foo')
+      expect(ins.save).to be(true)
+      ins = Institution.create(name: nil)
+      expect(ins.save).to be(false)
+    end
   end
 end
