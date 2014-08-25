@@ -15,6 +15,18 @@ RSpec.describe Period, :type => :model do
     expect(period.classrooms[1].name).to be_eql('b')
   end
 
-  it 'test number and type validation' do
+  describe 'validation' do
+    it 'number presence' do
+      p = Period.create(number: 1, kind: 'year')
+      expect(p.save).to be(true)
+      p = Period.create(number: nil, kind: 'year')
+      expect(p.save).to be(false)
+    end
+    it 'kind presence' do
+      p = Period.create(number: 1, kind: 'year')
+      expect(p.save).to be(true)
+      p = Period.create(number: 1, kind: nil)
+      expect(p.save).to be(false)
+    end
   end
 end
